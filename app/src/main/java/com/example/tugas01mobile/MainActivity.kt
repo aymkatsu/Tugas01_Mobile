@@ -1,8 +1,10 @@
 package com.example.tugas01mobile
 
 import android.os.Bundle
+import android.os.Message
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -15,6 +17,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.style.LineHeightStyle
 import androidx.compose.ui.text.style.TextAlign
@@ -46,7 +49,7 @@ class MainActivity : ComponentActivity() {
 fun GreetingText(pengirim: String, isi: String, judul: String, modifier: Modifier = Modifier) {
   Box(modifier = Modifier
       .fillMaxSize()
-      .background(Color.Magenta))
+      )
 
   Column (
       verticalArrangement = Arrangement.Top
@@ -80,14 +83,28 @@ Text(
 
   }
     }
-
+@Composable
+fun GreetingImage(pengirim: String, isi: String, judul: String, modifier: Modifier = Modifier) {
+    val image = painterResource(R.drawable._5_photos_confirming_that_chihuahuas_love_pink)
+    Box(modifier) {
+        Image(
+            painter = image,
+            contentDescription = null,
+            modifier = Modifier.fillMaxSize()
+        )
+        GreetingText(pengirim = pengirim ,
+            isi = isi,
+            judul =judul
+        )
+    }
+}
 
 @Preview(showBackground = true)
 @Composable
 fun GreetingPreview() {
     Tugas01MobileTheme {
-        GreetingText(pengirim = "Wahyu",
-            isi = "Selamat Anda Mendapat Saldo dadakan sebesar 100k",
-            judul ="Pemenang Doorprize" )
+      GreetingImage(pengirim = "Wahyu",
+          isi = "Selamat Anda Mendapat Saldo dadakan sebesar 100k",
+          judul ="Pemenang Doorprize")
     }
 }
