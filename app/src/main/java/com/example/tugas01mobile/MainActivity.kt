@@ -15,6 +15,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
@@ -36,7 +37,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    GreetingText(pengirim = "Wahyu",
+                    GreetingImage(pengirim = "Wahyu",
                         isi = "Selamat Anda Mendapat Saldo dadakan sebesar 100k",
                         judul ="Pemenang Doorprize" )
                 }
@@ -47,9 +48,6 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun GreetingText(pengirim: String, isi: String, judul: String, modifier: Modifier = Modifier) {
-  Box(modifier = Modifier
-      .fillMaxSize()
-      )
 
   Column (
       verticalArrangement = Arrangement.Top
@@ -63,7 +61,8 @@ Text(
 )
   }
   Column(
-      verticalArrangement = Arrangement.Center
+      verticalArrangement = Arrangement.Center,
+      modifier = Modifier.fillMaxSize()
   ){
 Text(
     text =isi,
@@ -73,8 +72,11 @@ Text(
 )
   }
   Column (
-      verticalArrangement = Arrangement.Bottom
-  ) {
+      verticalArrangement = Arrangement.Bottom,
+      horizontalAlignment = Alignment.End,
+      modifier = Modifier.fillMaxSize()
+  )
+  {
 Text(
     text =pengirim,
     fontSize = 50.sp,
@@ -85,17 +87,18 @@ Text(
     }
 @Composable
 fun GreetingImage(pengirim: String, isi: String, judul: String, modifier: Modifier = Modifier) {
-    val image = painterResource(R.drawable._5_photos_confirming_that_chihuahuas_love_pink)
+    val image = painterResource(R.drawable.download)
     Box(modifier) {
         Image(
             painter = image,
             contentDescription = null,
+            alpha = 0.9F,
             modifier = Modifier.fillMaxSize()
         )
         GreetingText(pengirim = pengirim ,
             isi = isi,
-            judul =judul
-        )
+            judul =judul,
+            modifier =  Modifier.fillMaxSize())
     }
 }
 
