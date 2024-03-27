@@ -19,6 +19,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.style.LineHeightStyle
 import androidx.compose.ui.text.style.TextAlign
@@ -37,9 +38,9 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    GreetingImage(pengirim = "Wahyu",
-                        isi = "Selamat Anda Mendapat Saldo dadakan sebesar 100k",
-                        judul ="Pemenang Doorprize" )
+                    GreetingImage(pengirim = stringResource(R.string.wahyu),
+                        isi = stringResource(R.string.selamat_anda_mendapat_saldo_dadakan_sebesar_100k),
+                        judul = stringResource(R.string.pemenang_doorprize) )
                 }
             }
         }
@@ -106,8 +107,8 @@ fun GreetingImage(pengirim: String, isi: String, judul: String, modifier: Modifi
 @Composable
 fun GreetingPreview() {
     Tugas01MobileTheme {
-      GreetingImage(pengirim = "Wahyu",
-          isi = "Selamat Anda Mendapat Saldo dadakan sebesar 100k",
-          judul ="Pemenang Doorprize")
+        GreetingImage(pengirim = stringResource(R.string.wahyu),
+            isi = stringResource(R.string.selamat_anda_mendapat_saldo_dadakan_sebesar_100k),
+            judul = stringResource(R.string.pemenang_doorprize) )
     }
 }
